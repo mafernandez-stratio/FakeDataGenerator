@@ -1,3 +1,2 @@
 # FakeDataGenerator
-Fake Data Generator
-Scala language
+Fake Data Generator in Scala language
