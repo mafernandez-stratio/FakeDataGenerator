@@ -30,9 +30,17 @@ case class Person(id: Int,
                   nationalIdentificationNumber: String,
                   passportNumber: String)
 
-object Generator extends App {
-  val SIZE = 10
-  val f = new File("out.csv")
+object PersonGenerator extends App {
+  val SIZE = if(args.length > 0){
+    args(0).toInt
+  } else {
+    10
+  }
+  val f = new File(if(args.length > 1){
+    args(1)
+  } else {
+    "persons.csv"
+  })
   val writer = CSVWriter.open(f)
   val fairy = Fairy.create()
   val dtfOut = DateTimeFormat.forPattern("dd/MM/yyyy")
@@ -60,6 +68,7 @@ object Generator extends App {
     "nationalIdentificationNumber",
     "passportNumber")
   writer.writeRow(header)
+  println("START")
   for(i <- 1 to SIZE){
     val person = fairy.person(PersonProperties.ageBetween(18, 65))
     val address = person.getAddress
@@ -87,30 +96,35 @@ object Generator extends App {
       person.nationalIdentityCardNumber,
       person.nationalIdentificationNumber,
       person.passportNumber)
-      val seq = List(
-        p.id,
-        p.firstName,
-        p.middleName,
-        p.lastName,
-        p.email,
-        p.username,
-        p.password,
-        p.sex,
-        p.addressPostalCode,
-        p.addressCity,
-        p.addressStreet,
-        p.addressStreetNumber,
-        p.telephoneNumber,
-        p.dateOfBirth,
-        p.age,
-        p.companyName,
-        p.companyDomain,
-        p.companyEmail,
-        p.companyVat,
-        p.nationalIdentityCardNumber,
-        p.nationalIdentificationNumber,
-        p.passportNumber)
-      writer.writeRow(seq)
+    val seq = List(
+      p.id,
+      s"'${p.firstName}'",
+      s"'${p.middleName}'",
+      s"'${p.lastName}'",
+      s"'${p.email}'",
+      s"'${p.username}'",
+      s"'${p.password}'",
+      s"'${p.sex}'",
+      s"'${p.addressPostalCode}'",
+      s"'${p.addressCity}'",
+      s"'${p.addressStreet}'",
+      s"'${p.addressStreetNumber}'",
+      s"'${p.telephoneNumber}'",
+      s"'${p.dateOfBirth}'",
+      p.age,
+      s"'${p.companyName}'",
+      s"'${p.companyDomain}'",
+      s"'${p.companyEmail}'",
+      s"'${p.companyVat}'",
+      s"'${p.nationalIdentityCardNumber}'",
+      s"'${p.nationalIdentificationNumber}'",
+      s"'${p.passportNumber}'")
+    writer.writeRow(seq)
   }
   writer.close
+  println("END")
+
+
 }
+
+

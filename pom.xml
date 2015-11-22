@@ -52,6 +52,26 @@
       <artifactId>scala-csv_2.10</artifactId>
       <version>1.2.2</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-core_2.10</artifactId>
+      <version>1.5.2</version>
+    </dependency>
+    <dependency>
+      <groupId>com.databricks</groupId>
+      <artifactId>spark-csv_2.10</artifactId>
+      <version>1.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.datastax.spark</groupId>
+      <artifactId>spark-cassandra-connector_2.10</artifactId>
+      <version>1.5.0-M2</version>
+    </dependency>
+    <dependency>
+      <groupId>com.stratio.datasource</groupId>
+      <artifactId>spark-mongodb_2.10</artifactId>
+      <version>0.10.1</version>
+    </dependency>
   </dependencies>
 
   <build>
