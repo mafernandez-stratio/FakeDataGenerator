@@ -9,6 +9,7 @@ import org.joda.time.format.DateTimeFormat
 
 case class Transaction(id: Int,
                   ipAddress: String,
+                  nationalIdentificationNumber: String,
                   company: String,
                   vatIdentificationNumber: String,
                   url: String,
@@ -38,6 +39,7 @@ object TransactionGenerator extends App {
   val header = List(
     "id",
     "ipAddress",
+    "nationalIdentificationNumber",
     "company",
     "vatIdentificationNumber",
     "url",
@@ -60,19 +62,21 @@ object TransactionGenerator extends App {
     val t = new Transaction(
       i,
       fairy.networkProducer().ipAddress(),
-    company.name(),
-    company.vatIdentificationNumber(),
-    company.url(),
-    ccard.vendor(),
-    dtfExpiry.print(ccard.expiryDate()),
-    dtfTransaction.print(fairy.dateProducer().randomDateBetweenYearAndNow(2010)),
-    textprod.word(1),
-    baseprod.randomBetween(0, 100),
-    baseprod.randomBetween(0.0, 1000.0),
-    textprod.sentence())
+      person.nationalIdentificationNumber(),
+      company.name(),
+      company.vatIdentificationNumber(),
+      company.url(),
+      ccard.vendor(),
+      dtfExpiry.print(ccard.expiryDate()),
+      dtfTransaction.print(fairy.dateProducer().randomDateBetweenYearAndNow(2010)),
+      textprod.word(1),
+      baseprod.randomBetween(0, 100),
+      baseprod.randomBetween(0.0, 1000.0),
+      textprod.sentence())
     val seq = List(
       t.id,
       s"'${t.ipAddress}'",
+      s"'${t.nationalIdentificationNumber}'",
       s"'${t.company}'",
       s"'${t.vatIdentificationNumber}'",
       s"'${t.url}'",
