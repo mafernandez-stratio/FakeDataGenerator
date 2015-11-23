@@ -75,18 +75,18 @@ object TransactionGenerator extends App {
       textprod.sentence())
     val seq = List(
       t.id,
-      s"'${t.ipAddress}'",
-      s"'${t.nationalIdentificationNumber}'",
-      s"'${t.company}'",
-      s"'${t.vatIdentificationNumber}'",
-      s"'${t.url}'",
-      s"'${t.vendor}'",
-      s"'${t.expiryDate}'",
-      s"'${t.date}'",
-      s"'${t.description}'",
+      s"${t.ipAddress}",
+      s"${t.nationalIdentificationNumber}",
+      s"${t.company}",
+      s"${t.vatIdentificationNumber}",
+      s"${t.url}",
+      s"${t.vendor}",
+      s"${t.expiryDate}",
+      s"${t.date}",
+      s"${t.description}",
       t.quantity,
       f"${t.total}%1.2f",
-      s"'${t.comment}'")
+      s"${t.comment}")
     writer.writeRow(seq)
   }
   writer.close
