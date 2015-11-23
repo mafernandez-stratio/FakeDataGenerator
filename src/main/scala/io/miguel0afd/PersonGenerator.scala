@@ -1,6 +1,7 @@
 package io.miguel0afd
 
 import java.io.File
+import java.util.UUID
 
 import com.github.tototoshi.csv.CSVWriter
 import io.codearte.jfairy.Fairy
@@ -97,7 +98,7 @@ object PersonGenerator extends App {
       person.nationalIdentificationNumber,
       person.passportNumber)
     val seq = List(
-      p.id,
+      UUID.randomUUID(),
       s"${p.firstName}",
       s"${p.middleName}",
       s"${p.lastName}",

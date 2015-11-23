@@ -1,6 +1,7 @@
 package io.miguel0afd
 
 import java.io.File
+import java.util.UUID
 
 import com.github.tototoshi.csv.CSVWriter
 import io.codearte.jfairy.Fairy
@@ -74,7 +75,7 @@ object TransactionGenerator extends App {
       baseprod.randomBetween(0.0, 1000.0),
       textprod.sentence())
     val seq = List(
-      t.id,
+      UUID.randomUUID(),
       s"${t.ipAddress}",
       s"${t.nationalIdentificationNumber}",
       s"${t.company}",
